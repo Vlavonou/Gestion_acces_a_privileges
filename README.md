@@ -1,7 +1,7 @@
 # Intégration de Teleport à Active Directory pour la gestion des accès à privilège
 
-> Mémoire de Licence en Informatique — Option Sécurité Informatique  
-> Institut de Formation et de Recherche en Informatique (IFRI) — Université d'Abomey-Calavi  
+> Mémoire de Licence en Informatique Option Sécurité Informatique  
+> Institut de Formation et de Recherche en Informatique (IFRI) Université d'Abomey-Calavi  
 > Auteur : **Senghor Padraic VLAVONOU** | Année académique : 2025-2026
 
 ---
@@ -96,7 +96,7 @@ New-ADUser -Name "Teleport Service Account" -SamAccountName $SamAccountName `
 
 Permissions minimales accordées sur les objets PKI dans AD, blocage des connexions interactives via GPO.
 
-### 5. GPO — Autoriser les connexions Teleport
+### 5. GPO - Autoriser les connexions Teleport
 
 - Import du certificat user-CA de Teleport dans les **Autorités de certification racines de confiance**
 - Publication dans `NTAuthCertificates` via `certutil`
@@ -152,7 +152,7 @@ Les 4 objectifs spécifiques du projet ont été atteints à **100%**.
 ## Technologies utilisées
 
 - **Teleport** 18.1.4 (Community Edition)
-- **Windows Server 2022** — Active Directory Domain Services + AD CS
+- **Windows Server 2022** - Active Directory Domain Services + AD CS
 - **Ubuntu Server 24.02 LTS**
 - **VMware Workstation 17 Pro**
 - **OpenSSL**, **PowerShell**, **tctl**
@@ -164,7 +164,7 @@ Les 4 objectifs spécifiques du projet ont été atteints à **100%**.
 ## Auteur
 
 **Senghor Padraic VLAVONOU**  
-Licence en Informatique — Option Sécurité Informatique  
+Licence en Informatique - Option Sécurité Informatique  
 IFRI, Université d'Abomey-Calavi, Bénin
 
 Encadrant : Ing. Vladimir HOUZANME
