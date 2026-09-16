@@ -1,6 +1,6 @@
 # Intégration de Teleport à Active Directory pour la gestion des accès à privilège
 
-> Mémoire de Licence en Informatique — Option Sécurité Informatique
+> Mémoire de Licence en Informatique - Option Sécurité Informatique
 > Institut de Formation et de Recherche en Informatique (IFRI), Université d'Abomey-Calavi
 > Auteur : **Senghor Padraic VLAVONOU** | Encadrant : Ing. Vladimir HOUZANME | Année académique 2025-2026
 
@@ -53,7 +53,7 @@ Quatre solutions ont été analysées de manière comparative : **Teleport**, **
 | Dépendance aux mots de passe | Non | Faible | Forte | Forte |
 | Licence | Open source | Propriétaire | Propriétaire | Propriétaire |
 
-Cette analyse comparative a montré que les solutions concurrentes reposent majoritairement sur des licences propriétaires et onéreuses, peu compatibles avec les contraintes d'un environnement académique. **Teleport se distingue par son caractère open source**, son architecture fondée sur le paradigme **Zero Trust**, et une authentification entièrement passwordless basée sur des certificats éphémères — ce qui en fait la solution la plus adaptée au contexte du projet.
+Cette analyse comparative a montré que les solutions concurrentes reposent majoritairement sur des licences propriétaires et onéreuses, peu compatibles avec les contraintes d'un environnement académique. **Teleport se distingue par son caractère open source**, son architecture fondée sur le paradigme **Zero Trust**, et une authentification entièrement passwordless basée sur des certificats éphémères - ce qui en fait la solution la plus adaptée au contexte du projet.
 
 ### Principe de fonctionnement de Teleport
 
@@ -63,7 +63,7 @@ Teleport repose sur trois composants principaux :
 - **Proxy Service** : point d'entrée unique du cluster depuis l'extérieur ; il relaie le trafic vers les ressources internes sans jamais décrypter ni authentifier directement les connexions.
 - **Agents** : déployés au plus près des ressources cibles, ils communiquent via les protocoles natifs des services (SSH, RDP via le Teleport Desktop Protocol, API Kubernetes, bases de données, etc.) et vérifient les certificats émis par l'Auth Service.
 
-Après une première authentification sécurisée par MFA, reliée à un fournisseur d'identité (Active Directory, Okta, GitHub…), l'utilisateur reçoit un certificat temporaire à durée de vie configurable (TTL). Ce certificat porte à la fois l'identité de l'utilisateur et ses permissions (RBAC), qui expirent automatiquement à l'issue de la session — ce qui permet d'appliquer nativement le principe du moindre privilège, contrairement à l'attribution statique des droits observée dans Active Directory.
+Après une première authentification sécurisée par MFA, reliée à un fournisseur d'identité (Active Directory, Okta, GitHub…), l'utilisateur reçoit un certificat temporaire à durée de vie configurable (TTL). Ce certificat porte à la fois l'identité de l'utilisateur et ses permissions (RBAC), qui expirent automatiquement à l'issue de la session - ce qui permet d'appliquer nativement le principe du moindre privilège, contrairement à l'attribution statique des droits observée dans Active Directory.
 
 ---
 
@@ -109,11 +109,11 @@ La mise en œuvre s'est déroulée en plusieurs étapes structurées :
 
 Un accès privilégié a été considéré comme *auditable* dans ce travail lorsque les journaux de sécurité permettent d'identifier sans ambiguïté : l'utilisateur humain à l'origine de l'action, la session concernée, la machine cible, et les actions réalisées. Ce cadre a été appliqué à deux scénarios identiques (création d'un répertoire et d'un compte de domaine ajouté au groupe des administrateurs), l'un exécuté via une session RDP native, l'autre via une session médiée par Teleport.
 
-### Scénario 1 — Accès RDP natif via Active Directory
+### Scénario 1 - Accès RDP natif via Active Directory
 
 L'analyse des journaux de sécurité Windows (Observateur d'événements) après la session a révélé un événement de type *Security Group Management* (ID 4799), associé non pas à un utilisateur humain mais au **compte machine** (`WINDUSER$`) et à un processus système (`svchost.exe`). L'identifiant de session technique relevé (Logon ID) ne permettait aucune correspondance explicite avec une session RDP identifiable. Ces observations mettent en évidence les limites constatées des journaux natifs : absence d'identification claire de l'utilisateur réel, informations dispersées et purement techniques, nécessité d'une corrélation manuelle longue entre plusieurs événements, et donc une faible valeur probante pour établir qui a réalisé une action, dans quel cadre, et avec quelle intention.
 
-### Scénario 2 — Accès médié par Teleport
+### Scénario 2 - Accès médié par Teleport
 
 La même opération, réalisée via une session Teleport (authentification `JackAdmin` + MFA, puis connexion au compte `Jack` sans saisie de mot de passe grâce à l'authentification par certificat), a généré dans le journal d'audit de Teleport (*Audit Log*) une série d'événements horodatés et liés à un identifiant de session unique : démarrage de la session bureau Windows, émission des certificats utilisateur, fin de la session. Le détail de l'événement *Windows Desktop Session Started* mentionne explicitement le compte Teleport (`JackAdmin`), le compte Windows utilisé (`Jack`), le domaine (`memoire.local`), les adresses réseau locale et distante, ainsi que le protocole utilisé (Teleport Desktop Protocol). La section *Session Recording* permet en complément de rejouer intégralement la session sous forme de vidéo.
 
@@ -157,7 +157,7 @@ Le mémoire ouvre plusieurs pistes de poursuite : intégration de Teleport dans 
 ## Technologies utilisées
 
 - **Teleport** 18.1.4 (Community Edition)
-- **Windows Server 2022** — Active Directory Domain Services + Active Directory Certificate Services (AD CS)
+- **Windows Server 2022** - Active Directory Domain Services + Active Directory Certificate Services (AD CS)
 - **Ubuntu Server 24.02 LTS**
 - **VMware Workstation 17 Pro**
 - **OpenSSL**, **PowerShell**, **tctl** (CLI d'administration Teleport)
@@ -168,7 +168,7 @@ Le mémoire ouvre plusieurs pistes de poursuite : intégration de Teleport dans 
 ## Auteur
 
 **Senghor Padraic VLAVONOU**
-Licence en Informatique — Option Sécurité Informatique
+Licence en Informatique - Option Sécurité Informatique
 IFRI, Université d'Abomey-Calavi, Bénin
 
 Encadrant : Ing. Vladimir HOUZANME
