@@ -174,9 +174,6 @@ IFRI, Université d'Abomey-Calavi, Bénin
 Encadrant : Ing. Vladimir HOUZANME
 
 ---
-> 📄 Ce README propose une synthèse du travail. Pour une lecture complète (revue de littérature, analyse détaillée, bibliographie), consulter le mémoire complet au format PDF disponible dans ce dépôt.
-
----
 
 ## Licence
 
